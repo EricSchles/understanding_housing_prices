@@ -1,0 +1,14 @@
+<svg width="48" height="20" viewBox="0 0 48 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <rect id="a" width="48" height="20" rx="3"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="b" fill="#fff">
+      <use xlink:href="#a"/>
+    </mask>
+    <use fill="#ED1B77" xlink:href="#a"/>
+    <text mask="url(#b)" font-family="PostGrotesk-Medium, Post Grotesk" font-size="13" font-weight="400" letter-spacing=".46" fill="#FFF">
+      <tspan x="8" y="14">BET</tspan> <tspan x="32.611" y="14">A</tspan>
+    </text>
+  </g>
+</svg>

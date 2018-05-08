@@ -15,6 +15,8 @@ Update to the plan:
 
 It turns out most housing websites do a pretty good job at protecting against bots.  Given lack of time, I'm going to forgo typical scraping and instead download each page and then parse it locally.  Given more time, I'd do a thorough investigation of user-agent strings, rotating IP addresses, VPNs, and alternative scraper technologies.
 
+
+
 ## Installation
 
 In order to carry out this project, I needed some extra tools.  So in order to get the scraper to work, you'll need [chromeheadless-driver](https://sites.google.com/a/chromium.org/chromedriver/downloads).  From there you'll need to put the binary in your executable path.  For Ubuntu, the answer seems to be to put the executable in `/opt` and then soft link it to `/usr/local/bin`.  From the terminal this looks like:

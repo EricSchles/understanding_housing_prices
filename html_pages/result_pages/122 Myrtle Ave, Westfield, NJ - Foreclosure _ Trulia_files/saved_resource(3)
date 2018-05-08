@@ -1,0 +1,29 @@
+
+var ftGUID_2988109="367159DCF5DB75";
+var ftConfID_2988109="8455779";
+var ftParams_2988109="ftx=&fty=&ftadz=&ftscw=&ft_custom=8504561294294013618|$389878&ftOBA=1&ft_agentEnv=0&ft_referrer=https%3A%2F%2Fwww.trulia.com%2Fp%2Fnj%2Fwestfield%2F122-myrtle-ave-westfield-nj-07090--2006219673&ft_keyword=__r8gpd4tws__riynsedj4__&ft_section=%26ft_keyword%3D__r8gpd4tws__riynsedj4__&cachebuster=325023.33850816044";
+var ftKeyword_2988109="";
+var ftCustom_2988109="8504561294294013618|$389878";
+var ftSection_2988109="&ft_keyword=__r8gpd4tws__riynsedj4__";
+var ftSegment_2988109="n5s,ejt,iw6,ejtjfk_aus,o45jfk_aus,eju,o45,p9m,p9l,ejtCHS_JFK,ejtchs_jfk,o45chs_jfk,iw8,n7h,n68,q3p_ES_v2,qv0,rrb,rre,ohw,ign";
+var ftSegmentList_2988109=[{s:'n5s'},{s:'ejt',t:37300000},{s:'iw6',t:37300000},{s:'ejtjfk_aus'},{s:'o45jfk_aus'},{s:'eju'},{s:'o45'},{s:'p9m'},{s:'p9l'},{m:'c1777',s:'ejtCHS_JFK',t:37300000},{s:'ejtchs_jfk'},{s:'o45chs_jfk'},{s:'iw8',t:37300000},{s:'n7h'},{s:'n68'},{m:'c6527_rt',s:'q3p_ES_v2'},{s:'qv0',t:37670000},{s:'rrb'},{s:'rre'},{m:'c5163_lastviewed_14day',s:'ohw',t:37720000},{s:'ign'}];
+var ftRuleMatch_2988109="00100000";
+var ftTimestamp_2988109="1525782510";
+var ftGeoC2_2988109="us";
+var ftGeoState_2988109="ny";
+var ftGeoCity_2988109="brooklyn";
+var ftISP_2988109="time warner cable internet llc";
+var ftSpeed_2988109="cable";
+var ftDMA_2988109="501";
+var ftLong_2988109="-73.9524";
+var ftLat_2988109="40.7141";
+var ftPostal_2988109="11211";
+var ftTimeZone_2988109="-400";
+var ftMobileCarrier_2988109="";
+var ftImp2988109 = {};
+ftImp2988109.privacy = "x";
+ftImp2988109.guidAge = "109";
+ftImp2988109.impID = "37802EB25FD363";
+
+document.write('<scr'+'ipt src="https://cdn.flashtalking.com/xre/298/2988109/2094349/js/j-2988109-2094349.js" id="ftscript_m2988109" name="ftscript_m2988109"></scr'+'ipt>');
+                    

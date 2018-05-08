@@ -1,0 +1,88 @@
+from glob import glob
+import lxml.html
+import pandas as pd
+
+
+def to_text(filename):
+    with open(filename, "r") as f:
+        return f.read()
+
+    
+def parse_main():
+    files = glob("html_pages/base_page/*.html")
+    for filename in files:
+        text = to_text(filename)
+        html = lxml.html.fromstring(text)
+        links = [link for link in html.xpath("//a/@href") if link.startswith("https://www.trulia.com/p")]
+        links = set(links)
+
+    for link in links:
+        print(link)
+        print()
+
+        
+def get_info_type(info):
+    if "bed" in info:
+        return "num_beds"
+    elif "bath" in info:
+        return "num_baths"
+    elif "lot size" in info:
+        return "lot_size"
+    elif "Home" in info:
+        return "home_style"
+    elif "sqft" in info:
+        return "square_feet"
+    elif "Condo" in info:
+        return "home_style"
+
+    
+def get_headline_metadata(html):
+    data = {}
+    parsed_info  = html.xpath('//div[contains(@class, "xsCol24")]/ul[contains(@class, "listInlineBulleted")]')
+    parsed_info = parsed_info[0].text_content()
+    parsed_info = [elem.strip() for elem in parsed_info.split("\n")
+                  if elem.strip() != '']
+    key_list = [
+        "num_beds", "num_baths",
+        "lot_size", "home_style",
+        "square_feet"
+    ]
+    for info in parsed_info:
+        data[get_info_type(info)] = info
+    for key in key_list:
+        if key not in data:
+            data[key] = "not listed"
+    return data
+
+
+def get_price(html):
+    price = html.xpath('//span[@data-role="price"]')
+    price = price[0].text_content()
+    price = price.strip()
+    try:
+        old_price = html.xpath('//span[@id="priceChangeTooltip"]/p[@class="typeStrikethrough"]')[0].text_content()
+    except:
+        old_price = 0
+    import code
+    code.interact(local=locals())
+
+    
+def parse_listing(html):
+    structural_metadata = get_structural_metadata(html)
+    price_info = get_price(html)
+    return data
+
+
+def grab_listings(place):
+    df = pd.DataFrame()
+    listings = glob("html_pages/result_pages/*.html")
+    for listing in listings:
+        text = to_text(listing)
+        html = lxml.html.fromstring(text)
+        tmp = parse_listing(html)
+        df = df.append(tmp, ignore_index=True)
+    df.to_csv(place+".csv", index=False)
+
+    
+if __name__ == '__main__':
+    grab_listings("westfield_nj")

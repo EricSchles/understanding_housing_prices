@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0105)https://s0.2mdn.net/6256710/1520904884632/CMI_Refinance_Banner_2017_SapientRazorfish_300x250_2/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <meta name="ad.size" content="width=300,height=250">
+
+    <link href="./style(1).css" rel="stylesheet">
+    <script src="./head.load.min.js"></script>
+
+    <script type="text/javascript"> var clickTag = "http://www.google.com"; </script>
+<script type="text/javascript" src="./sapient_main.js"></script><script type="text/javascript" src="./sapient_util.js"></script><script type="text/javascript" src="./TweenLite.min.js"></script><script type="text/javascript" src="./TimelineLite.min.js"></script><script type="text/javascript" src="./EasePack.min.js"></script><script type="text/javascript" src="./CSSPlugin.min.js"></script><script type="text/javascript" src="./skin1.js"></script><script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script></head>
+
+<body>
+  <div id="mainContainer" class="containerWidth containerHeight">
+      <div id="bannerContainer" class="bannerWidth bannerHeight">
+          <div id="bannerBackground1" class="bannerWidth bannerHeight"></div>
+          
+          
+          
+          <div id="header" class="bannerWidth">
+            <div class="header_grad"></div>
+          </div>
+
+          
+          <div id="copy1" class="unselectable"></div>
+          <div id="copy2" class="unselectable"></div>
+
+          <div id="bannerBackground2" class="bannerWidth bannerHeight"></div>
+          <div id="copy3" class="unselectable"></div>
+          <div id="copy4" class="unselectable"></div>
+
+          <div id="footer" class="bannerWidth">
+            <div class="footer_grad"></div>
+            <div id="img_logo">
+                <div id="img_logo_src"></div>
+            </div>
+          </div>
+          <div id="copy5" class="font_light headlinesText unselectable bannerWidth"></div>
+
+          <div id="bgExit" class="bannerWidth bannerHeight"></div>
+
+          <div id="cta1" class="cta font_bold">
+              <div id="cta1Text" class="ctaFontContainer unselectable"></div>
+              <div class="arrow">
+                  <svg width="10" height="18">
+                      <polyline points="1 1, 8 8, 1 15" stroke="#0b5c9e" fill="transparent"></polyline>
+                  </svg>
+              </div>
+          </div>
+          <div id="replayBtn">
+              <div id="replayText" class=" unselectable"></div>
+          </div>
+
+      </div>
+
+    <!-- Use in page with <base> and svg gradients -->
+    <!--<script>!function(){try{var l=location.href.replace(/#.*$/,""),e=document.querySelectorAll("path,ellipse");for(var t=0,o=e.length;o>t;t++){var r=e[t];var c=r.getAttribute("fill"),a=c.replace(/url\((['"]?)#/i,"url($1"+l+"#");c!==a&&r.setAttribute("fill",a)}}catch(i){}}();
+    </script>-->
+
+    <script>
+            head.ready(document, function() {
+                head.load("sapient_main.js");
+            });
+    </script>
+    <noscript>
+      &lt;style&gt;#mainContainer{display:none}&lt;/style&gt;
+      &lt;a href="javascript:window.open(window.clickTag)"&gt;
+          &lt;img border="0" alt="Backup Image" src="backup.jpg" /&gt;
+      &lt;/a&gt;
+    </noscript>
+
+
+
+</div></body></html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)https://cdn.flashtalking.com/78090/2094349/jB_dynamic_master_300x250_base.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style></style>
+	<style>
+		html, body{
+		  height:100%;
+		  width:100%;
+		  overflow: visible;
+		}
+		#border {
+			pointer-events: none;
+			border: 1px solid #999;
+			position: absolute;
+		    -moz-box-sizing:border-box;
+		    -webkit-box-sizing:border-box;
+		    box-sizing:border-box;
+			width: 100%;
+			height: 100%;
+			left: 0px;
+			top: 0px;
+			z-index:3;	
+			opacity: 0;
+			overflow: visible;
+		   transition: opacity .15s ease-in-out;
+		   -moz-transition: opacity .15s ease-in-out;
+		   -webkit-transition: opacity .15s ease-in-out;
+		}   
+     	#RL1_div{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+		#RL2_div {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0px;
+			top: 0px;		
+			overflow: visible;	
+		}
+     	#RL1_holder{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0px;
+			top: 0px;
+			z-index:1;				
+			visibility:hidden;
+			overflow: visible;
+		}
+		#RL2_holder{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index:2;			
+			visibility:hidden;
+			overflow: visible;
+		}
+	</style>
+</head>
+<body>
+    <div id="border" style="border-color: rgb(51, 51, 51); opacity: 1;"></div>
+ 	
+    <div id="RL1_holder" style="visibility: visible;">
+    	<ft-richload name="RL1" id="RL1_div"></ft-richload>
+    </div>
+    <div id="RL2_holder" style="">
+    	<ft-richload name="RL2" id="RL2_div"></ft-richload>
+    </div>
+
+
+	<script src="./html5API.js"></script>
+	<script src="./FTFeed.min.js"></script>
+
+	<script>
+		var theFeed,
+			theFeedUrl,
+			RL1_holder=myFT.$('#RL1_holder'),
+			RL2_holder=myFT.$('#RL2_holder'),
+			border=myFT.$('#border'),
+			isFeedLoaded=false,
+			RL1_loaded=false,
+			RL2_loaded=false,
+			RL1_ready=false,
+			RL2_ready=false,
+			showDefault=true,
+			RL2_active=true,
+			borderColor="#999";
+		
+
+		function RL1_available(){
+			RL1_loaded=true;
+			loadChecker();
+		}
+        // If 'false' is passed as parameter in call to RL2_available from richload 2 that means this banner should only run richoad 1.                
+        // For example, richload 2 will call this if not being used: window.parent.RL2_available(false);
+
+		function RL2_available(rl2_used){
+			RL2_loaded=true;
+			loadChecker();
+			
+			if(!rl2_used && rl2_used!=undefined){								
+				RL2_active=false;
+				RL2_ready=true;
+				ready_to_play();
+			}
+
+		}
+		function RL1_ready_to_play(){
+			RL1_ready=true;
+			ready_to_play();
+		}
+		function RL2_ready_to_play(){
+			RL2_ready=true;
+			ready_to_play();
+		}				
+		function ready_to_play(){
+			if(RL1_ready && RL2_ready){
+				myFT.dispatch('RL1_play' )				
+				RL1_holder[0].style.visibility="visible";
+				border[0].style.opacity="1";			
+
+			}
+		}
+		function loadChecker(){
+			if(RL1_loaded && RL2_loaded && isFeedLoaded){
+				if(!showDefault){
+					myFT.dispatch('theFeedLoaded',{a: theFeed})
+				}else{
+					myFT.dispatch('theFeedLoaded',{a: false})
+				}
+			}else{
+				setTimeout(loadChecker,250)		
+			}
+		}		
+		function show_RL2(){
+			if(RL2_active){
+				RL2_holder[0].style.visibility="visible";
+			}
+			
+		}
+		function init_RL2(){
+			myFT.dispatch('RL2_play');
+		}
+		
+		myFT.on('instantads',function(){
+			//set border color
+			borderColor=myFT.instantAds.borderColor;
+			border[0].style.borderColor=borderColor;			
+
+            //feed component from feeds team
+            var feedParams = new FTFeedParams();
+            feedParams.segmentId = myFT.instantAds['feed1_segment'];
+            feedParams.feedEndpoint = myFT.instantAds['feed1'];
+            feedParams.defaultFeedEndpoint = myFT.instantAds['feed1_default_endpoint'];
+            var ftFeed = new FTFeed(myFT, feedParams);
+            ftFeed.getFeed(success, error);
+
+		})
+		var success = function(feedArray, feed_url){
+			theFeed=feedArray;
+			theFeedUrl=feed_url;
+			isFeedLoaded=true;
+			showDefault=false;
+		};
+		var error = function(error, extra_information){
+			showDefault=true;
+			isFeedLoaded=true;
+		};
+
+	</script>
+	
+
+</body></html>
